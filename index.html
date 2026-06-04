@@ -6,135 +6,185 @@
   <title>Welcome to Platform Team 2026 Demo</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f4ef;
-      color: #1f2d2b;
+      font-family: Arial, sans-serif;
+      background: #f7faf9;
+      color: #12372a;
+    }
+
+    .demo-section {
+      min-height: 100vh;
+      padding: 60px 20px;
+      text-align: center;
+      background: #f7faf9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .demo-section h1 {
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+      color: #12372a;
+    }
+
+    .demo-intro {
+      max-width: 750px;
+      margin: 0 auto 35px;
+      color: #4b5563;
+      font-size: 1rem;
       line-height: 1.6;
     }
 
-    header {
-      background: linear-gradient(135deg, #123c34, #245c4d);
-      color: white;
-      text-align: center;
-      padding: 80px 20px 65px;
-    }
-
-    .tag {
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 13px;
-      font-weight: bold;
-      color: #d7c8a8;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      max-width: 900px;
+    .slideshow-container {
+      position: relative;
+      max-width: 850px;
       margin: 0 auto;
-      font-size: 48px;
-      line-height: 1.15;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
     }
 
-    .subtitle {
-      max-width: 720px;
-      margin: 20px auto 0;
-      font-size: 18px;
-      color: #f4efe4;
-    }
-
-    main {
-      max-width: 950px;
-      margin: 45px auto;
-      padding: 0 20px;
-    }
-
-    .menu-section h2 {
-      text-align: center;
-      font-size: 34px;
-      color: #173f35;
-      margin-bottom: 35px;
-    }
-
-    .menu-item {
-      display: flex;
-      gap: 22px;
-      align-items: flex-start;
-      background: white;
-      border-radius: 18px;
-      padding: 24px;
-      margin-bottom: 18px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-      border-left: 7px solid #d7c8a8;
-    }
-
-    .number {
-      background: #173f35;
+    .slide {
+      display: none;
+      min-height: 380px;
+      padding: 60px 45px;
+      background: linear-gradient(135deg, #12372a, #436850);
       color: white;
-      min-width: 48px;
-      height: 48px;
-      border-radius: 50%;
+      animation: fade 0.6s ease-in-out;
+    }
+
+    .slide.active {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
     }
 
-    .menu-item h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-      color: #173f35;
+    .slide-content {
+      max-width: 650px;
     }
 
-    .menu-item p {
-      margin: 0;
-      color: #4d5a57;
-      font-size: 16px;
-    }
-
-    .video-link {
+    .slide-number {
       display: inline-block;
-      margin-top: 14px;
-      padding: 10px 18px;
-      background: #173f35;
-      color: white;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      color: #d2e3c8;
+      font-weight: 700;
+    }
+
+    .slide h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .slide p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      color: #eef7ee;
+    }
+
+    .demo-link {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #ffffff;
+      color: #12372a;
       text-decoration: none;
       border-radius: 999px;
-      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .demo-link:hover {
+      background: #d2e3c8;
+      transform: translateY(-2px);
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 14px 18px;
+      color: white;
       font-weight: bold;
+      font-size: 24px;
+      border: none;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      transition: 0.3s ease;
     }
 
-    .video-link:hover {
-      background: #245c4d;
+    .prev:hover,
+    .next:hover {
+      background: rgba(255, 255, 255, 0.32);
     }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: #6b6b6b;
-      font-size: 14px;
+    .prev {
+      left: 20px;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 60px 18px 50px;
+    .next {
+      right: 20px;
+    }
+
+    .dots {
+      margin-top: 22px;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 6px;
+      background-color: #cbd5d1;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .active-dot,
+    .dot:hover {
+      background-color: #12372a;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0.4;
+        transform: translateX(20px);
       }
 
-      h1 {
-        font-size: 34px;
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .demo-section h1 {
+        font-size: 2rem;
       }
 
-      .subtitle {
-        font-size: 16px;
+      .slide {
+        padding: 50px 28px;
+        min-height: 420px;
       }
 
-      .menu-item {
-        flex-direction: column;
+      .slide h2 {
+        font-size: 1.6rem;
+      }
+
+      .slide p {
+        font-size: 0.95rem;
+      }
+
+      .prev,
+      .next {
+        font-size: 18px;
+        padding: 10px 14px;
       }
     }
   </style>
@@ -142,53 +192,102 @@
 
 <body>
 
-  <header>
-    <p class="tag">Tech Team Meetup</p>
+  <section class="demo-section">
     <h1>Welcome to Platform Team 2026 Demo</h1>
-    <p class="subtitle">
-      A simple demo menu showcasing what we are creating, improving, and building together as the Platform Team.
+
+    <p class="demo-intro">
+      Explore three key platform capabilities designed to help teams move faster,
+      monitor better, and deploy with confidence.
     </p>
-  </header>
 
-  <main>
-    <section class="menu-section">
-      <h2>Demo Menu</h2>
+    <div class="slideshow-container">
 
-      <div class="menu-item">
-        <span class="number">01</span>
-        <div>
-          <h3>Golden Path</h3>
-          <p>Request a GitHub repository/link and get a ready-to-use setup with the essentials included, plus a deployment pipeline that deploys a Hello World service..</p>
-          <a href="#" target="_blank" class="video-link">Watch Video</a>
+      <div class="slide active">
+        <div class="slide-content">
+          <span class="slide-number">01</span>
+          <h2>Ephemeral Servers</h2>
+          <p>
+            Spin up temporary environments for testing, debugging, and demos
+            without affecting shared environments.
+          </p>
+          <a href="https://drive.google.com/file/d/1a7hbTBjgIrTwku_f2pT7blPztepok9Xi/view?usp=sharing" class="demo-link" target="_blank">Watch Demo</a>
         </div>
       </div>
 
-      <div class="menu-item">
-        <span class="number">02</span>
-        <div>
-          <h3>Ephemeral Servers</h3>
-          <p>Quickly create temporary server environments for testing, debugging, demos, and short-lived validation work without long manual setup.</p>
-          <a href="#" target="_blank" class="video-link">Watch Video</a>
+      <div class="slide">
+        <div class="slide-content">
+          <span class="slide-number">02</span>
+          <h2>Monitoring Dashboard Template</h2>
+          <p>
+            A reusable Elastic dashboard template using Fineract as an example,
+            giving teams visibility into service health, errors, latency, and
+            key troubleshooting signals.
+          </p>
+          <a href="https://www.loom.com/share/3ac24d17e2314441a5715a7fadd63494" class="demo-link" target="_blank">Watch Demo</a>
         </div>
       </div>
 
-      
-      <div class="menu-item">
-        <span class="number">03</span>
-        <div>
-          <h3>Monitoring Dashboard Template</h3>
-          <p> A standard dashboard template, using Fineract as an example, to give teams visibility into service health, errors, latency, dependencies, and troubleshooting signals.</p>
-          <a href="https://www.loom.com/share/3ac24d17e2314441a5715a7fadd63494" target="_blank" class="video-link">Watch Video</a>
+      <div class="slide">
+        <div class="slide-content">
+          <span class="slide-number">03</span>
+          <h2>Golden Path</h2>
+          <p>
+            Request a GitHub repository and get a ready-to-use setup with the
+            basics already included, including a deployment pipeline that deploys
+            a simple Hello World application.
+          </p>
+          <a href="https://drive.google.com/file/d/1I_FVHCFuqXogmsR6pyaoFex2OuLyyJIx/view?usp=sharing" class="demo-link" target="_blank">Watch Demo</a>
         </div>
       </div>
 
-    </section>
-  </main>
+      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="next" onclick="changeSlide(1)">&#10095;</button>
 
-  <footer>
-    <p>Platform Team 2026 Demo • Tech Team Meetup</p>
-  </footer>
+    </div>
+
+    <div class="dots">
+      <span class="dot active-dot" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+  </section>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(index) {
+      slides.forEach((slide) => slide.classList.remove("active"));
+      dots.forEach((dot) => dot.classList.remove("active-dot"));
+
+      slides[index].classList.add("active");
+      dots[index].classList.add("active-dot");
+    }
+
+    function changeSlide(step) {
+      slideIndex += step;
+
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      }
+
+      if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+      }
+
+      showSlide(slideIndex);
+    }
+
+    function currentSlide(index) {
+      slideIndex = index;
+      showSlide(slideIndex);
+    }
+
+    setInterval(() => {
+      changeSlide(1);
+    }, 6000);
+  </script>
 
 </body>
 </html>
-```
