@@ -39,7 +39,7 @@
 
     .slideshow-container {
       position: relative;
-      max-width: 850px;
+      max-width: 900px;
       margin: 0 auto;
       border-radius: 24px;
       overflow: hidden;
@@ -48,8 +48,8 @@
 
     .slide {
       display: none;
-      min-height: 380px;
-      padding: 60px 45px;
+      min-height: 430px;
+      padding: 55px 45px;
       background: linear-gradient(135deg, #12372a, #436850);
       color: white;
       animation: fade 0.6s ease-in-out;
@@ -62,33 +62,55 @@
     }
 
     .slide-content {
-      max-width: 650px;
+      max-width: 700px;
     }
 
     .slide-number {
       display: inline-block;
       font-size: 0.9rem;
       letter-spacing: 2px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: #d2e3c8;
       font-weight: 700;
     }
 
     .slide h2 {
       font-size: 2rem;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .slide p {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin-bottom: 28px;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
       color: #eef7ee;
+    }
+
+    .qr-card {
+      background: white;
+      width: fit-content;
+      margin: 0 auto 20px;
+      padding: 18px;
+      border-radius: 20px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .qr-card img {
+      width: 210px;
+      height: 210px;
+      display: block;
+    }
+
+    .scan-text {
+      font-size: 0.95rem;
+      color: #d2e3c8;
+      margin-bottom: 18px;
+      font-weight: 600;
     }
 
     .demo-link {
       display: inline-block;
-      padding: 12px 24px;
+      padding: 11px 22px;
       background: #ffffff;
       color: #12372a;
       text-decoration: none;
@@ -169,16 +191,21 @@
       }
 
       .slide {
-        padding: 50px 28px;
-        min-height: 420px;
+        padding: 45px 28px;
+        min-height: 470px;
       }
 
       .slide h2 {
-        font-size: 1.6rem;
+        font-size: 1.55rem;
       }
 
       .slide p {
         font-size: 0.95rem;
+      }
+
+      .qr-card img {
+        width: 180px;
+        height: 180px;
       }
 
       .prev,
@@ -196,7 +223,7 @@
     <h1>Welcome to Platform Team 2026 Demo</h1>
 
     <p class="demo-intro">
-      Explore three key platform capabilities designed to help teams move faster,
+      Scan the QR codes below to watch short demos of three key platform capabilities designed to help teams move faster,
       monitor better, and deploy with confidence.
     </p>
 
@@ -207,10 +234,19 @@
           <span class="slide-number">01</span>
           <h2>Ephemeral Servers</h2>
           <p>
-            Spin up temporary environments for testing, debugging, and demos
-            without affecting shared environments.
+            Spin up temporary environments for testing, debugging, and demos without affecting shared environments.
           </p>
-          <a href="https://drive.google.com/file/d/1a7hbTBjgIrTwku_f2pT7blPztepok9Xi/view?usp=sharing" class="demo-link" target="_blank">Watch Demo</a>
+
+          <div class="qr-card">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://drive.google.com/file/d/1a7hbTBjgIrTwku_f2pT7blPztepok9Xi/view?usp=sharing"
+              alt="QR code for Ephemeral Servers demo"
+            />
+          </div>
+
+          <div class="scan-text">Scan to watch the Ephemeral Servers demo</div>
+
+          <a href="https://drive.google.com/file/d/1a7hbTBjgIrTwku_f2pT7blPztepok9Xi/view?usp=sharing" class="demo-link" target="_blank">Open Video</a>
         </div>
       </div>
 
@@ -219,11 +255,20 @@
           <span class="slide-number">02</span>
           <h2>Monitoring Dashboard Template</h2>
           <p>
-            A reusable Elastic dashboard template using Fineract as an example,
-            giving teams visibility into service health, errors, latency, and
-            key troubleshooting signals.
+            A reusable Elastic dashboard template using Fineract as an example, giving teams visibility into service
+            health, errors, latency, and key troubleshooting signals.
           </p>
-          <a href="https://drive.google.com/file/d/1WKIz4G0ZqlMVwhyk05VPvL8ohG5N7B98/view?usp=sharing" class="demo-link" target="_blank">Watch Demo</a>
+
+          <div class="qr-card">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://drive.google.com/file/d/1WKIz4G0ZqlMVwhyk05VPvL8ohG5N7B98/view?usp=sharing"
+              alt="QR code for Monitoring Dashboard Template demo"
+            />
+          </div>
+
+          <div class="scan-text">Scan to watch the Monitoring Dashboard demo</div>
+
+          <a href="https://drive.google.com/file/d/1WKIz4G0ZqlMVwhyk05VPvL8ohG5N7B98/view?usp=sharing" class="demo-link" target="_blank">Open Video</a>
         </div>
       </div>
 
@@ -232,11 +277,20 @@
           <span class="slide-number">03</span>
           <h2>Golden Path</h2>
           <p>
-            Request a GitHub repository and get a ready-to-use setup with the
-            basics already included, including a deployment pipeline that deploys
-            a simple Hello World application.
+            Request a GitHub repository and get a ready-to-use setup with the basics already included, including a
+            deployment pipeline that deploys a simple Hello World application.
           </p>
-          <a href="https://drive.google.com/file/d/1I_FVHCFuqXogmsR6pyaoFex2OuLyyJIx/view?usp=sharing" class="demo-link" target="_blank">Watch Demo</a>
+
+          <div class="qr-card">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://drive.google.com/file/d/1I_FVHCFuqXogmsR6pyaoFex2OuLyyJIx/view?usp=sharing"
+              alt="QR code for Golden Path demo"
+            />
+          </div>
+
+          <div class="scan-text">Scan to watch the Golden Path demo</div>
+
+          <a href="https://drive.google.com/file/d/1I_FVHCFuqXogmsR6pyaoFex2OuLyyJIx/view?usp=sharing" class="demo-link" target="_blank">Open Video</a>
         </div>
       </div>
 
@@ -286,7 +340,7 @@
 
     setInterval(() => {
       changeSlide(1);
-    }, 6000);
+    }, 7000);
   </script>
 
 </body>
